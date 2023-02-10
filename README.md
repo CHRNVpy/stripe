@@ -8,6 +8,8 @@
 
 ```pip install -r requirements.txt```
 
+Создать в каталоге Stripe/ файл .env, внутри которого прописать все ваши ключи
+
 Запустить проект
 
 ```python manage.py runserver```
