@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stripe</title>
+</head>
+<body>
+<h2>{{ item.name }}</h2>
+<p>{{ item.description }}</p>
+<p>{{ item.price }}</p>
+
+<button id="buy-button">Buy</button>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    var buyButton = document.getElementById('buy-button');
+    buyButton.addEventListener('click', function (ev) {
+        fetch('/buy/{{ item.id }}/')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                var stripe = Stripe('pk_test_51M5mWhBcThK8CrAiTdf4CDh5Gi7UO1r8OiKkzOd0h2tE8EhyzuwfXaTmTNQop7YyN3sIbpgCxgpRUSyNcNafl6jM00QYmOuiyG');
+                stripe.redirectToCheckout({
+                    sessionId: data.session_id
+                });
+            });
+    });
+</script>
+</body>
+</html>
