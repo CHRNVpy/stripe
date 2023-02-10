@@ -4,7 +4,11 @@
 
 ```git clone https://github.com/CHRNVpy/stripe.git```
 
-Перейти в каталог Stripe/ и запустить проект командой
+Перейти в каталог Stripe/, установить все зависимости
+
+```pip install -r requirements.txt```
+
+Запустить проект
 
 ```python manage.py runserver```
 
