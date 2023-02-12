@@ -21,16 +21,25 @@ def buy_item(request, item_id):
                 'product_data': {
                     'name': item.name
                 },
-                'unit_amount': int(item.price),
+                'unit_amount': int(item.price) * 100,
             },
             'quantity': 1,
         }],
         mode='payment',
-        success_url="http://localhost:8000/success.html",
-        cancel_url="http://localhost:8000/cancel.html",
+        success_url="http://localhost:8000/success/",
+        cancel_url="http://localhost:8000/cancel/",
     )
     return JsonResponse({"session_id": session.id})
+
 
 def show_item(request, item_id):
     item = Item.objects.get(id=item_id)
     return render(request, "index.html", {"item": item})
+
+
+def success(request):
+    return render(request, 'success.html')
+
+
+def cancel(request):
+    return render(request, 'cancel.html')

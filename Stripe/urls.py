@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from payments.views import buy_item, show_item
+from payments.views import buy_item, show_item, success, cancel
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('buy/<int:item_id>/', buy_item, name='buy_item'),
     path('item/<int:item_id>/', show_item, name='show_item'),
+    path('success/', success, name='success'),
+    path('cancel/', cancel, name='cancel')
 ]
